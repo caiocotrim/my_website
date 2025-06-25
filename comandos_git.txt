@@ -1,0 +1,144 @@
+Git - Guia de Estudo Resumido
+=============================
+
+Comandos organizados por estado do Git, explicações fundamentais e resumo de uso
+
+O que é um commit?
+---------------------
+É um ponto de salvamento no histórico do Git. Ele registra o estado dos arquivos no momento em que você decide salvá-los, com uma mensagem explicativa.
+Cada commit tem um autor, data, hora e um ID único.
+
+O que são os 3 estados do Git?
+---------------------------------
+1. Working Directory: onde você cria, edita ou deleta arquivos localmente.
+2. Staging Area: onde você seleciona o que deseja salvar no próximo commit.
+3. Repositório (Commits): onde ficam os snapshots salvos permanentemente.
+
+O que são Branches?
+----------------------
+Branches são "linhas de desenvolvimento paralelas". Servem para desenvolver funcionalidades isoladas sem mexer na principal (master ou main).
+
+O que é Merge?
+-----------------
+É o processo de juntar o conteúdo de uma branch em outra. Ex: unir mudanças da AddMenu com a master.
+
+
+1. Working Directory (Estado Local)
+-----------------------------------
+Comandos e explicações:
+
+git init
+> Inicia um novo repositório Git na pasta atual.
+
+git status
+> Mostra o que foi modificado, adicionado ou removido.
+
+git diff
+> Mostra o que foi alterado nos arquivos desde o último commit.
+
+git restore <arquivo>
+> Restaura o arquivo modificado para a última versão commitada.
+
+git rm <arquivo>
+> Remove o arquivo do diretório e marca para ser removido no próximo commit.
+
+git mv <nome_atual> <nome_novo>
+> Renomeia/move arquivos no diretório de forma segura para o Git.
+
+
+2. Staging Area (Área de Preparação)
+------------------------------------
+Comandos e explicações:
+
+git add <arquivo>
+> Adiciona um arquivo individual ao staging.
+
+git add .
+> Adiciona todos os arquivos modificados ao staging.
+
+git rm --cached <arquivo>
+> Remove o arquivo apenas da staging.
+
+git restore --staged <arquivo>
+> Retira o arquivo da staging e o retorna para o estado modificado.
+
+
+3. Commit / Repositório (Histórico)
+-----------------------------------
+Comandos e explicações:
+
+git commit -m "mensagem do commit"
+> Salva as alterações da staging com uma mensagem explicativa.
+
+git commit -a -m "mensagem"
+> Pula o add e faz commit de arquivos já rastreados diretamente.
+
+git commit --amend -m "nova mensagem"
+> Edita a mensagem ou arquivos do último commit.
+
+git log
+> Mostra o histórico completo de commits.
+
+git log --oneline
+> Exibe o log de forma resumida.
+
+git log -p
+> Exibe as mudanças feitas em cada commit.
+
+git reset --soft <id>
+> Reverte commits, mas mantém mudanças no staging.
+
+git reset --mixed <id>
+> Reverte commits e remove mudanças do staging.
+
+git reset --hard <id>
+> ⚠️ Desfaz commits e apaga arquivos sem possibilidade de recuperação.
+
+
+Branches e Fluxo de Trabalho
+----------------------------
+Comandos e explicações:
+
+git branch AddMenu
+> Cria uma nova branch chamada AddMenu.
+
+git switch AddMenu
+> Muda para a branch AddMenu.
+
+git branch
+> Lista todas as branches e mostra qual está ativa.
+
+git switch master
+> Retorna para a branch principal master.
+
+git merge -m "mensagem" AddMenu
+> Junta as mudanças da branch AddMenu na branch atual.
+
+git branch -d AddMenu
+> Deleta a branch AddMenu após o merge.
+
+
+Aliases personalizados
+----------------------
+Comandos para criar atalhos:
+
+git config --global alias.log1 "log --oneline"
+git config --global alias.co "commit"
+
+
+Resumo prático de quando usar cada comando
+------------------------------------------
+
+| Ação                | Comando                           | Quando usar                                      |
+|---------------------|-----------------------------------|--------------------------------------------------|
+| Iniciar projeto     | git init                          | No começo de um repositório                      |
+| Ver status          | git status                        | Frequentemente, para ver o que mudou             |
+| Ver diferenças      | git diff                          | Antes de adicionar ao staging                    |
+| Adicionar arquivos  | git add . / git add <file>        | Ao preparar mudanças para commit                 |
+| Retirar do staging  | git restore --staged              | Quando adicionou algo por engano                 |
+| Fazer commit        | git commit -m "msg"               | Para salvar alterações no repositório            |
+| Corrigir commit     | git commit --amend                | Para editar a mensagem ou incluir arquivos       |
+| Ver histórico       | git log / git log --oneline       | Para acompanhar a linha do tempo                 |
+| Trabalhar com branch| git branch / switch / merge       | Para isolar e integrar novas funcionalidades     |
+| Reverter mudanças   | git reset, git restore            | Para voltar atrás com segurança                  |
+| Atalhos             | git config --global alias.xxx     | Para agilizar comandos repetitivos               |
