@@ -92,7 +92,7 @@ git reset --mixed <id>
 > Reverte commits e remove mudanças do staging.
 
 git reset --hard <id>
-> ⚠️ Desfaz commits e apaga arquivos sem possibilidade de recuperação.
+> Desfaz commits e apaga arquivos sem possibilidade de recuperação.
 
 
 Branches e Fluxo de Trabalho
@@ -116,6 +116,27 @@ git merge -m "mensagem" AddMenu
 
 git branch -d AddMenu
 > Deleta a branch AddMenu após o merge.
+
+
+Interação com GitHub (Repositório Remoto)
+------------------------------------------
+Comandos e explicações:
+
+git remote add origin <url-do-repositorio>
+> Conecta seu repositório local a um repositório remoto no GitHub.
+
+git push -u origin master
+> Envia os commits da branch atual (ex: master) para o repositório remoto pela primeira vez.
+
+git push
+> Envia os commits locais para o repositório remoto.
+
+git pull
+> Puxa (baixa) atualizações do repositório remoto para o repositório local.
+
+git clone <url-do-repositorio>
+> Clona um repositório remoto existente para sua máquina local.
+
 
 
 Aliases personalizados
